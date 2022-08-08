@@ -1,0 +1,40 @@
+version: '3'
+services:
+ 
+  redis:
+    image: redis:latest
+    deploy:
+      replicas: 1
+    restart: always
+    container_name: basket-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - C:\Docker\VOL\REDIS:/usr/local/etc/redis/redis.conf
+    networks:
+      - common-bridge
+
+  db:
+    image: postgres:latest
+    deploy:
+      replicas: 1
+    restart: always
+    container_name: basket-postgres
+    ports:
+      - 5432:5432
+    environment: 
+      - POSTGRES_PASSWORD=1234 
+    volumes:
+      - C:\Docker\VOL\PGSQL:/var/lib/postgresql/data
+    networks:
+      - common-bridge
+
+networks:
+  common-bridge:
+    driver: bridge
+
+
+volumes:
+  PGSQL:
+  REDIS: 
+  
