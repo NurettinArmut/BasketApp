@@ -10,11 +10,6 @@ namespace BasketApp.Data
             _context = appDbContext;
         }
 
-        //private readonly InMemoryDbContext _context;
-        //public UnitOfWork(InMemoryDbContext dbContext)
-        //{
-        //    _context = dbContext;
-        //}
         public void Commit()
         {
             _context.SaveChanges();
