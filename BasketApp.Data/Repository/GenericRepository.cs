@@ -25,11 +25,6 @@ namespace BasketApp.Data.Repository
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllListAsync()
-        {
-            return await _dbSet.ToListAsync();
-        }
-
         public async Task<TEntity> GetByIdAsync(int id)
         {
             var entity = await _dbSet.FindAsync(id);
@@ -56,11 +51,6 @@ namespace BasketApp.Data.Repository
         public IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbSet.Where(predicate);
-        }
-
-        public async Task<TEntity> GetProductByIdAsync(int id)
-        {
-            return await _dbSet.FindAsync(id);
         }
     }
 }

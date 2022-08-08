@@ -31,11 +31,11 @@ namespace BasketApp.Data.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "Stock", "UnitPrice" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1805), "Bilgisayar", 20, 100m },
-                    { 2, new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1809), "Buzdolabı", 10, 600m },
-                    { 3, new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1811), "Çamaşır Makinesi", 30, 100m },
-                    { 4, new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1812), "Elektrikli Süpürge", 20, 2500m },
-                    { 5, new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1814), "Bulaşık Makinesi", 40, 6600m }
+                    { 1, new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9993), "Bilgisayar", 20, 100m },
+                    { 2, new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9995), "Buzdolabı", 10, 600m },
+                    { 3, new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9997), "Çamaşır Makinesi", 30, 100m },
+                    { 4, new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9998), "Elektrikli Süpürge", 20, 2500m },
+                    { 5, new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9999), "Bulaşık Makinesi", 40, 6600m }
                 });
         }
 

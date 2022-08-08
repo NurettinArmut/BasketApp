@@ -10,9 +10,5 @@ namespace BasketApp.Core.Repositories
         Task AddAsync(TEntity entity);
         void Remove(TEntity entity);
         TEntity Update(TEntity entity);
-
-
-        Task<TEntity> GetProductByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAllListAsync();
     }
 }

@@ -52,7 +52,7 @@ namespace BasketApp.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1805),
+                            CreatedDate = new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9993),
                             Name = "Bilgisayar",
                             Stock = 20,
                             UnitPrice = 100m
@@ -60,7 +60,7 @@ namespace BasketApp.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1809),
+                            CreatedDate = new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9995),
                             Name = "Buzdolabı",
                             Stock = 10,
                             UnitPrice = 600m
@@ -68,7 +68,7 @@ namespace BasketApp.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1811),
+                            CreatedDate = new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9997),
                             Name = "Çamaşır Makinesi",
                             Stock = 30,
                             UnitPrice = 100m
@@ -76,7 +76,7 @@ namespace BasketApp.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1812),
+                            CreatedDate = new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9998),
                             Name = "Elektrikli Süpürge",
                             Stock = 20,
                             UnitPrice = 2500m
@@ -84,7 +84,7 @@ namespace BasketApp.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2022, 8, 3, 21, 14, 39, 764, DateTimeKind.Utc).AddTicks(1814),
+                            CreatedDate = new DateTime(2022, 8, 8, 20, 28, 20, 792, DateTimeKind.Utc).AddTicks(9999),
                             Name = "Bulaşık Makinesi",
                             Stock = 40,
                             UnitPrice = 6600m

@@ -1,6 +1,4 @@
-﻿using BasketApp.Core.Dtos;
-using BasketApp.Core.Models;
-using BasketApp.Core.Repositories;
+﻿using BasketApp.Core.Repositories;
 using BasketApp.Core.Services;
 using BasketApp.Core.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -35,10 +33,10 @@ namespace BasketApp.Service.Services
 
             return Response<IEnumerable<TDto>>.Success(dtos, 200);
         }
- 
+
         public async Task<IEnumerable<TDto>> GetAllListAsync()
         {
-            return ObjectMapper.Mapper.Map<List<TDto>>(await _genericRepository.GetAllListAsync());
+            return ObjectMapper.Mapper.Map<List<TDto>>(await _genericRepository.GetAllAsync());
         }
 
         public async Task<Response<TDto>> GetByIdAsync(int id)
@@ -85,11 +83,6 @@ namespace BasketApp.Service.Services
         {
             var querableList = _genericRepository.Where(predicate);
             return Response<IEnumerable<TDto>>.Success(ObjectMapper.Mapper.Map<IEnumerable<TDto>>(await querableList.ToListAsync()), 200);
-        }
-
-        public async Task<TEntity> GetProductByIdAsync(int id)
-        {
-            return await  _genericRepository.GetProductByIdAsync(id);
         }
     }
 }

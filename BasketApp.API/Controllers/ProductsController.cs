@@ -2,8 +2,6 @@
 using BasketApp.Core.Models;
 using BasketApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.Services;
-using StackExchange.Redis;
 
 namespace BasketApp.API.Controllers
 {

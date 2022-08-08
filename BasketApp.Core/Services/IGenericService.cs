@@ -11,8 +11,6 @@ namespace BasketApp.Core.Services
         Task<Response<TDto>> AddAsync(TDto dto);
         Task<Response<NoDataDto>> Remove(int id);
         Task<Response<NoDataDto>> UpdateAsync(TDto dto, int id);
-
-        Task<TEntity> GetProductByIdAsync(int id);
         Task<IEnumerable<TDto>> GetAllListAsync();
     }
 }

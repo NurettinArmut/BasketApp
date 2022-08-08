@@ -17,8 +17,8 @@ namespace BasketApp.Service.Services
         private readonly IDatabase db;
         private readonly IDatabase db2;
 
-        private string listBasketKey = "basket2"; // "basketDto";
-        private string listProductsKey = "ProductList2"; // "Products";
+        private string listBasketKey = "basket_stk"; 
+        private string listProductsKey = "products_stk"; 
 
         BasketStockDto bBasketDto = new();
 
@@ -40,7 +40,7 @@ namespace BasketApp.Service.Services
             {
                 int countBasket = 0;
                 var productDtoList = db.ListRange(listProductsKey).ToList();
-
+                
                 Byte[] byteProductDto = productDtoList.SelectMany(a => Encoding.UTF8.GetBytes(a)).ToArray();
 
                 string jsonproduct = Encoding.UTF8.GetString(byteProductDto);
@@ -51,34 +51,21 @@ namespace BasketApp.Service.Services
 
                 listBasketKey += pDto.Id.ToString();
 
-                var value = db2.StringGet(listBasketKey);
-
-                if (!value.HasValue)
-                {
-                    db2.StringSet(listBasketKey, pDto.Stock);
+                if (!db2.KeyExists(listBasketKey))
+                    {
+                    bBasketDto.BasketStock = 0;
+                    db2.StringSet(listBasketKey, bBasketDto.BasketStock, new TimeSpan(0, 0, 40));                   
                 }
 
-                //db.KeyDelete(listBasketKey);
-                //countBasket = Convert.ToInt32(db2.StringGet(listBasketKey));
-
-                db.KeyExpire(listBasketKey, DateTime.Now.AddMinutes(5)); //todo dk artırılacak
-
                 db2.StringIncrement(listBasketKey, 1);
-               // db2.StringDecrement(listBasketKey, 1);
-                countBasket =  Convert.ToInt32(db2.StringGet(listBasketKey));
-
-                //if (Convert.ToInt32(db2.StringGet(listBasketKey) == 0)
-                //{
-                //    db2.StringIncrement(listBasketKey, 1);
-                //    countBasket = Convert.ToInt32(db2.StringGet(listBasketKey));
-                //}
+                countBasket = Convert.ToInt32(db2.StringGet(listBasketKey));
 
                 bBasketDto.Id = pDto.Id;
                 bBasketDto.Name = pDto.Name;
                 bBasketDto.BasketStock = Convert.ToInt32(countBasket);
                 bBasketDto.ProductStock = pDto.Stock - Convert.ToInt32(countBasket);
 
-                if (pDto.Stock - Convert.ToInt32(db2.StringGet(listBasketKey)) <= 0)
+                if (pDto.Stock - Convert.ToInt32(db2.StringGet(listBasketKey)) < 0)
                 {
                     bBasketDto.BasketStock = pDto.Stock;
                     bBasketDto.ProductStock = 0;
@@ -89,7 +76,6 @@ namespace BasketApp.Service.Services
             return Response<BasketStockDto>.Success(ObjectMapper.Mapper.Map<BasketStockDto>(bBasketDto), 200);
         }
 
-
         public async Task<List<ProductDto>> GetAllProducts()
         {
 
@@ -99,15 +85,13 @@ namespace BasketApp.Service.Services
                 var products = await _genericService.GetAllListAsync();
                 productsDto = ObjectMapper.Mapper.Map<List<ProductDto>>(products);
 
-                db.KeyExpire(listProductsKey, DateTime.Now.AddMinutes(10)); //todo dk artırılacak
+                db.KeyExpire(listProductsKey, new TimeSpan(0, 0, 50)); 
 
                 if (products != null)
                 {
                     string jsonProductsDto = JsonSerializer.Serialize(productsDto);
 
                     Byte[] byteProductsDto = Encoding.UTF8.GetBytes(jsonProductsDto);
-
-                    //  db.ListRemove(listProductsKey, byteProductsDto);
 
                     //Redis Cache ekleme
                     db.ListRightPush(listProductsKey, byteProductsDto);
